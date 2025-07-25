@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 21:48:05 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/25 21:52:06 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/07/25 23:03:51 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,38 @@ void	create_image(t_game *game, t_image *image, int width, int height)
 
 void	put_pixel(t_image *img, int x, int y, int color)
 {
-	char *dst;
+	char	*dst;
 
 	dst = img->addr + (y * img->line_len + x * (img->bpp / 8));
 	*(unsigned int *)dst = color;
+}
+
+void	put_line(t_image *img, int coordinates[2], int line_len, int color)
+{
+	int	x;
+
+	x = 0;
+	while (coordinates[0] + x < line_len)
+	{
+		put_pixel(img, coordinates[0] + x, coordinates[1], color);
+		x++;
+	}
+}
+
+void	put_scare(t_image *img, int coordinates[2], int line_len, int color)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (coordinates[1] + y < coordinates[1] + line_len)
+	{
+		x = 0;
+		while (coordinates[0] + x < coordinates[0] + line_len)
+		{
+			put_pixel(img, coordinates[0] + x, coordinates[1] + y, color);
+			x++;
+		}
+		y++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 10:45:45 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/25 21:53:38 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/07/25 22:42:52 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_textures
 typedef struct s_scene
 {
 	t_textures	textures;
-	char		**map;
+	char		*map;
 	int			map_width;
 	int			map_height;
 }				t_scene;
@@ -42,12 +42,20 @@ typedef struct s_image
 	int			height;
 }				t_image;
 
+typedef struct s_player
+{
+	int			x;
+	int			y;
+}				t_player;
+
 typedef struct s_game
 {
 	void		*mlx;
 	void		*window;
 	int			screen_height;
 	int			screen_width;
+	t_player	*player;
+	t_scene		scene;
 }				t_game;
 
 # include "init.h"
