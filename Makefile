@@ -6,7 +6,7 @@
 #    By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/09 14:36:04 by dcastor           #+#    #+#              #
-#    Updated: 2025/07/25 11:41:21 by dcastor          ###   ########.fr        #
+#    Updated: 2025/07/25 21:58:04 by dcastor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,16 +17,19 @@
 # 📛 Nom du programme
 NAME := cub3d
 LIB_NAME := libft
+MLX_NAME := minilibx-linux
 
 # 📂 Répertoires
 SRCS_DIR := srcs/
 BUILD_DIR := build/
 LIB_DIR := $(LIB_NAME)/
-INCLUDE_DIRS := -I$(LIB_DIR)includes -Iincludes
+MLX_DIR := $(MLX_NAME)/
+INCLUDE_DIRS := -I$(LIB_DIR)includes -Iincludes -I$(MLX_DIR)
 
 # 📦 Compiler & Flags
 CC := cc
-CFLAGS := -Wall -Wextra -Werror -g3
+CFLAGS := -Wall -Wextra -Werror -g3 $(INCLUDE_DIRS)
+MLX_FLAGS := -lX11 -lXext
 
 # 🛠 Utilitaires
 MAKE := make
@@ -35,6 +38,10 @@ RM := rm -rf
 # 📁 Sources & Objets
 SRCS := $(addprefix $(SRCS_DIR), \
 		init/init_args.c \
+		init/init_game.c \
+		\
+		render/background.c \
+		render/render_utils.c \
 		\
 		utils/error.c \
 		\
@@ -46,6 +53,8 @@ DEPS := $(OBJS:.o=.d)
 
 # 📚 Libft
 LIB_FILE := $(LIB_DIR)libft.a
+MLX_FILE := $(MLX_DIR)libmlx.a
+
 
 # ============================================================================== #
 #                               RULES - BUILD FLOW                               #
@@ -55,8 +64,8 @@ LIB_FILE := $(LIB_DIR)libft.a
 all: $(NAME)
 
 # 🧱 Construction de l'exécutable
-$(NAME): $(BUILD_DIR) $(LIB_FILE) $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(LIB_FILE) $(OBJS) $(INCLUDE_DIRS) -lm -lft -L$(LIB_DIR)
+$(NAME): $(BUILD_DIR) $(LIB_FILE) $(MLX_FILE) $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIB_FILE) $(MLX_FILE) $(MLX_FLAGS) -lm
 
 # 🔨 Compilation des .c vers .o
 $(BUILD_DIR)%.o: %.c
@@ -76,16 +85,15 @@ $(BUILD_DIR):
 $(LIB_FILE): $(LIB_DIR)
 	$(MAKE) -sC $(LIB_DIR)
 
+$(MLX_FILE):
+	$(MAKE) -sC $(MLX_DIR)
 
 # ============================================================================== #
 #                                   CLEAN RULES                                  #
 # ============================================================================== #
 
-clean: clean_lib
-	$(RM) $(BUILD_DIR)
-
-clean_lib:
-	$(MAKE) -sC $(LIB_DIR) clean
+clean:
+	$(RM) $(BUILD_DIR) && make clean -C $(LIB_DIR) && make clean -C $(MLX_DIR)
 
 fclean: clean
 	$(RM) $(NAME)

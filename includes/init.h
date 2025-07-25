@@ -6,13 +6,14 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 11:12:54 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/25 12:02:30 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/07/25 20:56:27 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __INIT_H__
 # define __INIT_H__
 
+void	init_game(t_game *game);
 void	check_args(int argc, char **argv);
 
 #endif
