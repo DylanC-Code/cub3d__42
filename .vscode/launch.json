@@ -1,0 +1,29 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Debug from cub3d",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/cub3d",
+			"args": [],
+			"MIMode": "gdb",
+			"cwd": "${workspaceFolder}",
+			"preLaunchTask": "Build cub3d",
+			"miDebuggerPath": "/usr/bin/gdb",
+			"externalConsole": false,
+			"setupCommands": [
+				{
+					"description": "Enable pretty-printing for gdb",
+					// "text": "-enable-pretty-printing",
+					// "text": "-enable-pretty-printing set follow-fork-mode child",
+					"text": "set detach-on-fork off",
+					"ignoreFailures": true
+				}
+			],
+		},
+	]
+}
