@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   init_args.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/25 10:45:45 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/25 12:02:48 by dcastor          ###   ########.fr       */
+/*   Created: 2025/07/25 11:12:16 by dcastor           #+#    #+#             */
+/*   Updated: 2025/07/25 11:14:09 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __CUB3D_H__
-# define __CUB3D_H__
+#include "cub3d.h"
 
-# include "init.h"
-# include "libft.h"
-# include "utils.h"
-# include <stdio.h>
-# include <unistd.h>
-
-typedef struct s_textures
+void	check_args(int argc, char **argv)
 {
-	char		*east;
-	char		*west;
-	char		*north;
-	char		*south;
-	int			floor_color;
-	int			ceil_color;
-}				t_textures;
-
-typedef struct s_scene
-{
-	t_textures	textures;
-	char		**map;
-	int			map_width;
-	int			map_height;
-}				t_scene;
-
-#endif
+	if (argc != 2)
+	{
+		ft_error("wrong number of arguments");
+		printf("Example: ./cub3d <map_file.cub>");
+		exit(1);
+	}
+	if (!ft_ends_with(argv[1], ".cub"))
+	{
+		ft_error("wrong map extension");
+		printf("Example: ./cub3d <map_file.cub>");
+		exit(2);
+	}
+}

@@ -1,40 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/25 10:45:45 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/25 12:02:48 by dcastor          ###   ########.fr       */
+/*   Created: 2025/07/25 12:01:46 by dcastor           #+#    #+#             */
+/*   Updated: 2025/07/25 12:02:11 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __CUB3D_H__
-# define __CUB3D_H__
+#ifndef __UTILS_H__
+# define __UTILS_H__
 
-# include "init.h"
-# include "libft.h"
-# include "utils.h"
-# include <stdio.h>
-# include <unistd.h>
-
-typedef struct s_textures
-{
-	char		*east;
-	char		*west;
-	char		*north;
-	char		*south;
-	int			floor_color;
-	int			ceil_color;
-}				t_textures;
-
-typedef struct s_scene
-{
-	t_textures	textures;
-	char		**map;
-	int			map_width;
-	int			map_height;
-}				t_scene;
+void	ft_error(char *msg);
 
 #endif
