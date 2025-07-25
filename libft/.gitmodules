@@ -1,0 +1,6 @@
+[submodule "srcs/utils/get_next_line"]
+	path = srcs/utils/get_next_line
+	url = git@github.com:DylanC-Code/get_next_line.git
+[submodule "srcs/utils/gnl"]
+	path = srcs/utils/gnl
+	url = git@github.com:DylanC-Code/get_next_line.git
