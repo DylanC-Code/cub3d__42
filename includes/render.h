@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 21:52:55 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/27 11:36:13 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/07/27 11:54:10 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ enum	ELEMENTS
 	WALL,
 };
 
+int		render_frame(void *param);
 void	display_hud(t_game *game);
 // t_status	display_game(t_game *game);
 int		display_game(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 10:31:24 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/27 11:37:59 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/07/27 12:19:40 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,15 @@ int	main(int argc, char **argv)
 	game.scene.map_width = 10;
 	game.player.pos.x = 5;
 	game.player.pos.y = 5;
+	// game.player.angle = PI / 2;
+	game.player.angle = PI / 2;
+	game.player.delta.x = cos(game.player.angle) * MOVE_SPEED;
+	game.player.delta.y = -sin(game.player.angle) * MOVE_SPEED;
 	// init_map(argc, argv);
 	init_game(&game);
 	// check_args(argc, argv);
 	handle_events(&game);
+	// mlx_loop_hook(game.mlx, render_frame, &game);
 	mlx_loop_hook(game.mlx, display_game, &game);
 	mlx_loop(game.mlx);
 	return (EXIT_SUCCESS);
