@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 10:45:45 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/27 12:16:00 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/07/27 21:18:37 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define __CUB3D_H__
 
 # define PI 3.1415926535
-# define MOVE_SPEED 0.01f
+# define MOVE_SPEED 0.05f
 
 typedef struct s_textures
 {
@@ -62,6 +62,7 @@ typedef struct s_game
 {
 	void			*mlx;
 	void			*window;
+	t_image			render;
 	int				screen_height;
 	int				screen_width;
 	t_player		player;

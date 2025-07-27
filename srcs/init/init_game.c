@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 20:55:40 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/25 22:59:12 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/07/27 14:45:23 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ void	init_game(t_game *game)
 			game->screen_height, "cub3d");
 	if (!game->window)
 		exit_error("mlx_init", game);
+	create_image(game, &game->render, game->screen_width, game->screen_height);
 	set_background_color(game, 0x0000FFFF);
 }

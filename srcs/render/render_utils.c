@@ -6,11 +6,16 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 21:48:05 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/27 10:42:28 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/07/27 15:28:02 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+// static int	abs_val(int x)
+// {
+// 	return (x < 0 ? -x : x);
+// }
 
 void	create_image(t_game *game, t_image *image, int width, int height)
 {
@@ -25,40 +30,59 @@ void	create_image(t_game *game, t_image *image, int width, int height)
 	image->height = height;
 }
 
-void	put_pixel(t_image *img, int x, int y, int color)
+void	put_pixel(t_image *img, t_coordinates *pos, int color)
 {
 	char	*dst;
 
-	dst = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	if (pos->x < 0 || pos->y < 0 || pos->x > img->width || pos->y > img->height)
+		return ;
+	dst = img->addr + ((int)pos->y * img->line_len + (int)pos->x * (img->bpp
+				/ 8));
 	*(unsigned int *)dst = color;
 }
 
-void	put_line(t_image *img, int coordinates[2], int line_len, int color)
+void	put_line(t_image *img, t_coordinates *start, t_coordinates *end,
+		int color)
 {
-	int	x;
+	t_coordinates	delta;
+	t_coordinates	cur_pos;
+	t_coordinates	pos_inc;
+	int				i;
+	int				steps;
 
-	x = 0;
-	while (coordinates[0] + x < line_len)
+	delta.x = end->x - start->x;
+	delta.y = end->y - start->y;
+	steps = fabsf(delta.x) > fabsf(delta.y) ? fabsf(delta.x) : fabsf(delta.y);
+	pos_inc.x = delta.x / steps;
+	pos_inc.y = delta.y / steps;
+	cur_pos.x = start->x;
+	cur_pos.y = start->y;
+	i = 0;
+	while (i <= steps)
 	{
-		put_pixel(img, coordinates[0] + x, coordinates[1], color);
-		x++;
+		put_pixel(img, &cur_pos, color);
+		cur_pos.x += pos_inc.x;
+		cur_pos.y += pos_inc.y;
+		i++;
 	}
 }
 
-void	put_square(t_image *img, int coordinates[2], int line_len, int color)
+void	put_square(t_image *image, t_coordinates *start, int size, int color)
 {
-	int	y;
-	int	x;
+	t_coordinates	curr;
+	t_coordinates	curr_off;
 
-	y = 0;
-	while (coordinates[1] + y < coordinates[1] + line_len)
+	curr.y = 0;
+	while (start->y + curr.y < start->y + size)
 	{
-		x = 0;
-		while (coordinates[0] + x < coordinates[0] + line_len)
+		curr.x = 0;
+		while (start->x + curr.x < start->x + size)
 		{
-			put_pixel(img, coordinates[0] + x, coordinates[1] + y, color);
-			x++;
+			curr_off.x = start->x + curr.x;
+			curr_off.y = start->y + curr.y;
+			put_pixel(image, &curr_off, color);
+			curr.x++;
 		}
-		y++;
+		curr.y++;
 	}
 }

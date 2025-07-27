@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 21:54:22 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/25 23:16:41 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/07/27 15:33:00 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,23 @@
 
 void	fill_image(t_image *img, int color)
 {
-	int	x;
-	int	y;
+	t_coordinates	pos;
 
-	y = 0;
-	while (y < img->height)
+	pos.y = 0;
+	while (pos.y < img->height)
 	{
-		x = 0;
-		while (x < img->width)
-			put_pixel(img, x++, y, color);
-		y++;
+		pos.x = 0;
+		while (pos.x < img->width)
+		{
+			put_pixel(img, &pos, color);
+			pos.x++;
+		}
+		pos.y++;
 	}
 }
 
 void	set_background_color(t_game *game, int color)
 {
-	t_image	image;
-
-	ft_bzero(&image, sizeof(t_image));
-	create_image(game, &image, game->screen_width, game->screen_height);
-	fill_image(&image, color);
-	mlx_put_image_to_window(game->mlx, game->window, image.img, 0, 0);
+	fill_image(&game->render, color);
+	mlx_put_image_to_window(game->mlx, game->window, game->render.img, 0, 0);
 }

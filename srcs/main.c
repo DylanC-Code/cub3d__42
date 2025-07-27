@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 10:31:24 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/27 12:19:40 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/07/27 15:33:22 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	main(int argc, char **argv)
 	game.scene.map_width = 10;
 	game.player.pos.x = 5;
 	game.player.pos.y = 5;
-	// game.player.angle = PI / 2;
 	game.player.angle = PI / 2;
 	game.player.delta.x = cos(game.player.angle) * MOVE_SPEED;
 	game.player.delta.y = -sin(game.player.angle) * MOVE_SPEED;
