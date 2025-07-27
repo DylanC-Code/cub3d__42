@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 21:48:05 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/25 23:03:51 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/07/27 10:42:28 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	put_line(t_image *img, int coordinates[2], int line_len, int color)
 	}
 }
 
-void	put_scare(t_image *img, int coordinates[2], int line_len, int color)
+void	put_square(t_image *img, int coordinates[2], int line_len, int color)
 {
 	int	y;
 	int	x;

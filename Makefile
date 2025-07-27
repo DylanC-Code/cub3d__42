@@ -6,7 +6,7 @@
 #    By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/09 14:36:04 by dcastor           #+#    #+#              #
-#    Updated: 2025/07/25 22:41:36 by dcastor          ###   ########.fr        #
+#    Updated: 2025/07/27 11:24:37 by dcastor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,11 +37,19 @@ RM := rm -rf
 
 # 📁 Sources & Objets
 SRCS := $(addprefix $(SRCS_DIR), \
+		events/events.c \
+		events/exit.c \
+		events/inputs.c \
+		events/movement.c \
+		\
 		init/init_args.c \
 		init/init_game.c \
 		\
 		render/background.c \
+		render/game.c \
+		render/hud.c \
 		render/map.c \
+		render/player.c \
 		render/render_utils.c \
 		\
 		utils/error.c \

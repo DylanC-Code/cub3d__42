@@ -6,13 +6,13 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 21:54:22 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/25 22:03:57 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/07/25 23:16:41 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	fill_image(t_image *img, int color)
+void	fill_image(t_image *img, int color)
 {
 	int	x;
 	int	y;

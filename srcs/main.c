@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 10:31:24 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/25 22:42:45 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/07/27 11:37:59 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,13 @@ int	main(int argc, char **argv)
 	game.scene.map = (char *)map;
 	game.scene.map_height = 10;
 	game.scene.map_width = 10;
+	game.player.pos.x = 5;
+	game.player.pos.y = 5;
 	// init_map(argc, argv);
 	init_game(&game);
-	render_map(&game);
 	// check_args(argc, argv);
+	handle_events(&game);
+	mlx_loop_hook(game.mlx, display_game, &game);
 	mlx_loop(game.mlx);
 	return (EXIT_SUCCESS);
 }
