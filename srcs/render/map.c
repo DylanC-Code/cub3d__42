@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 22:14:18 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/27 15:01:09 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/07/28 16:19:43 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ void	render_map(t_game *game)
 				put_square(&game->render, &el_pos_off, 30, 0x00000000);
 		}
 	}
-	mlx_put_image_to_window(game->mlx, game->window, game->render.img, 0, 0);
+	// mlx_put_image_to_window(game->mlx, game->window, game->render.img, 0, 0);
 	// game->screen_height - 32 * game->scene.map_width);
 }

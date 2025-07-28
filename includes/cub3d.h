@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 10:45:45 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/28 14:33:28 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/07/28 17:23:22 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # define PI 3.1415926535
 # define MOVE_SPEED 0.05f
+# define TILE_SIZE 32
+# define FOV (PI / 3) // 60deg
+# define RAY_COUNT 60
 
 typedef struct s_textures
 {
@@ -39,20 +42,6 @@ typedef struct s_coordinates
 	float			x;
 	float			y;
 }					t_coordinates;
-
-typedef struct s_ray_hit
-{
-	t_coordinates	pos;
-	float			distance;
-	int				is_vertical;
-}					t_ray_hit;
-
-typedef struct s_raycaster
-{
-	t_coordinates	origin;
-	float			angle;
-	t_ray_hit		hit;
-}					t_raycaster;
 
 typedef struct s_image
 {
@@ -87,6 +76,7 @@ typedef struct s_game
 # include "init.h"
 # include "libft.h"
 # include "mlx.h"
+# include "raycast.h"
 # include "render.h"
 # include "utils.h"
 # include <X11/X.h>

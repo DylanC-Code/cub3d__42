@@ -6,7 +6,7 @@
 #    By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/09 14:36:04 by dcastor           #+#    #+#              #
-#    Updated: 2025/07/27 11:24:37 by dcastor          ###   ########.fr        #
+#    Updated: 2025/07/28 16:15:03 by dcastor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,13 @@ SRCS := $(addprefix $(SRCS_DIR), \
 		\
 		init/init_args.c \
 		init/init_game.c \
+		\
+		raycast/cast_ray.c \
+		raycast/horizontal.c \
+		raycast/ray_utils.c \
+		raycast/raycast.c \
+		raycast/vector_utils.c \
+		raycast/vertical.c \
 		\
 		render/background.c \
 		render/game.c \

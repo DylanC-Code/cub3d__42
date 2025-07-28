@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 10:44:21 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/28 14:12:14 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/07/28 16:19:35 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ void	render_player(t_game *game)
 	player_off.y = game->player.pos.y * 32;
 	put_square(&game->render, &player_off, 8, 0x00F5E170);
 	render_vue_line(game);
-	mlx_put_image_to_window(game->mlx, game->window, game->render.img, 0, 0);
+	// mlx_put_image_to_window(game->mlx, game->window, game->render.img, 0, 0);
 }

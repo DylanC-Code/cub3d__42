@@ -2,6 +2,7 @@
 	"files.associations": {
 		"cub3d.h": "c",
 		"keysym.h": "c",
-		"x.h": "c"
+		"x.h": "c",
+		"raycast.h": "c"
 	}
 }
