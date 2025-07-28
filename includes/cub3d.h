@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 10:45:45 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/27 21:18:37 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/07/28 14:33:28 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,20 @@ typedef struct s_coordinates
 	float			x;
 	float			y;
 }					t_coordinates;
+
+typedef struct s_ray_hit
+{
+	t_coordinates	pos;
+	float			distance;
+	int				is_vertical;
+}					t_ray_hit;
+
+typedef struct s_raycaster
+{
+	t_coordinates	origin;
+	float			angle;
+	t_ray_hit		hit;
+}					t_raycaster;
 
 typedef struct s_image
 {
