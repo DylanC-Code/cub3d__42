@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 14:38:01 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/28 17:29:22 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/09 11:41:11 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	launch_rays(t_game *game)
 	angle_step = FOV / (float)RAY_COUNT;
 	start_angle = game->player.angle - (FOV / 2.0f);
 	ray_index = -1;
-	printf("player angle = %f\n", game->player.angle);
 	while (++ray_index < RAY_COUNT)
 	{
 		ray.origin.x = game->player.pos.x * TILE_SIZE + 4;
@@ -39,13 +38,5 @@ void	launch_rays(t_game *game)
 		ray.angle = normalize_angle(-(start_angle + ray_index * angle_step));
 		cast_single_ray(game, &ray);
 		put_line(&game->render, &ray.origin, &ray.hit.pos, 0xFF0000);
-		if (ray_index == 0 || ray_index == 10 || ray_index == 30
-			|| ray_index == 59)
-		{
-			printf("ray[%d] angle = %.2f (deg)\n", ray_index, ray.angle * 180
-				/ PI);
-			printf("origin = (%.1f, %.1f)\n", ray.origin.x, ray.origin.y);
-			printf("hit    = (%.1f, %.1f)\n", ray.hit.pos.x, ray.hit.pos.y);
-		}
 	}
 }

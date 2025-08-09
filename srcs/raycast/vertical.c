@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 15:33:58 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/28 17:23:18 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/09 11:36:59 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ static t_coordinates	get_first_vertical(t_raycaster *ray,
 	else
 		tan_a = tanf(ray->angle);
 
-	if (cosf(ray->angle) > 0) // vers la droite
+	if (cosf(ray->angle) > 0)
 	{
 		pos.x = (((int)ray->origin.x >> 5) << 5) + TILE_SIZE;
 		pos.y = (pos.x - ray->origin.x) * tan_a + ray->origin.y;
 		step->x = TILE_SIZE;
 		step->y = TILE_SIZE * tan_a;
 	}
-	else // vers la gauche
+	else
 	{
 		pos.x = (((int)ray->origin.x >> 5) << 5) - 0.0001f;
 		pos.y = (pos.x - ray->origin.x) * tan_a + ray->origin.y;
