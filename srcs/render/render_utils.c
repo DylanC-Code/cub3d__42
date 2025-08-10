@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 21:48:05 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/27 15:28:02 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/10 10:52:42 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,16 @@ void	create_image(t_game *game, t_image *image, int width, int height)
 
 void	put_pixel(t_image *img, t_coordinates *pos, int color)
 {
+	int		x;
+	int		y;
 	char	*dst;
 
-	if (pos->x < 0 || pos->y < 0 || pos->x > img->width || pos->y > img->height)
+	x = (int)pos->x;
+	y = (int)pos->y;
+	if (x < 0 || y < 0 || x >= img->width || y >= img->height)
 		return ;
-	dst = img->addr + ((int)pos->y * img->line_len + (int)pos->x * (img->bpp
-				/ 8));
-	*(unsigned int *)dst = color;
+	dst = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	*(unsigned int *)dst = (unsigned int)color;
 }
 
 void	put_line(t_image *img, t_coordinates *start, t_coordinates *end,

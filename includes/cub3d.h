@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 10:45:45 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/10 10:27:12 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/10 14:11:56 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,19 @@ typedef struct s_textures
 	int				floor_color;
 	int				ceil_color;
 }					t_textures;
+
+typedef struct s_wall_params
+{
+	int		top;
+	int		bot;
+	int		x0;
+	int		x1;
+	int		tx;
+	float	v0;
+	float	vstep;
+	float	shade;
+}			t_wall_params;
+
 
 typedef struct s_walls_img
 {

@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 10:24:28 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/10 10:26:21 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/10 11:03:48 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	free_scene_data(t_scene *s)
 	s->textures.south = NULL;
 	s->textures.east = NULL;
 	s->textures.west = NULL;
-	free(s->map);
+	// free(s->map);
 	s->map = NULL;
 }
 

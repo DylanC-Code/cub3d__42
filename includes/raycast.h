@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 14:38:06 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/28 16:24:53 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/10 10:37:46 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,21 @@
 
 # include "cub3d.h"
 
+typedef enum e_side
+{
+	SIDE_NORTH,
+	SIDE_SOUTH,
+	SIDE_EAST,
+	SIDE_WEST
+}								t_side;
+
 typedef struct s_coordinates	t_coordinates;
 
 typedef struct s_ray_hit
 {
 	t_coordinates				pos;
 	float						distance;
+	t_side						side;
 	int							is_vertical;
 }								t_ray_hit;
 

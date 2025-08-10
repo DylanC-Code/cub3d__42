@@ -3,6 +3,9 @@
 		"cub3d.h": "c",
 		"keysym.h": "c",
 		"x.h": "c",
-		"raycast.h": "c"
+		"raycast.h": "c",
+		"libft.h": "c",
+		"strs.h": "c",
+		"render.h": "c"
 	}
 }
