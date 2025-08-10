@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 11:07:08 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/27 11:11:43 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/10 10:30:08 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 t_status	exit_game(t_game *game)
 {
-	(void)game;
-	// full_destroy(game);
-	exit(0);
+	free_and_exit(game, 0);
 	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 #    By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/09 14:36:04 by dcastor           #+#    #+#              #
-#    Updated: 2025/07/28 16:15:03 by dcastor          ###   ########.fr        #
+#    Updated: 2025/08/10 10:29:12 by dcastor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,8 @@ RM := rm -rf
 
 # 📁 Sources & Objets
 SRCS := $(addprefix $(SRCS_DIR), \
+		cleanup/cleanup.c \
+		\
 		events/events.c \
 		events/exit.c \
 		events/inputs.c \
@@ -44,6 +46,7 @@ SRCS := $(addprefix $(SRCS_DIR), \
 		\
 		init/init_args.c \
 		init/init_game.c \
+		init/init_textures.c \
 		\
 		raycast/cast_ray.c \
 		raycast/horizontal.c \
