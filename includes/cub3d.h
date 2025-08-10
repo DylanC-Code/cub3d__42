@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 10:45:45 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/28 17:23:22 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/10 10:27:12 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,6 @@
 # define FOV (PI / 3) // 60deg
 # define RAY_COUNT 60
 
-typedef struct s_textures
-{
-	char			*east;
-	char			*west;
-	char			*north;
-	char			*south;
-	int				floor_color;
-	int				ceil_color;
-}					t_textures;
-
-typedef struct s_scene
-{
-	t_textures		textures;
-	char			*map;
-	int				map_width;
-	int				map_height;
-}					t_scene;
-
-typedef struct s_coordinates
-{
-	float			x;
-	float			y;
-}					t_coordinates;
-
 typedef struct s_image
 {
 	void			*img;
@@ -53,6 +29,39 @@ typedef struct s_image
 	int				width;
 	int				height;
 }					t_image;
+
+typedef struct s_textures
+{
+	char			*east;
+	char			*west;
+	char			*north;
+	char			*south;
+	int				floor_color;
+	int				ceil_color;
+}					t_textures;
+
+typedef struct s_walls_img
+{
+	t_image			north;
+	t_image			south;
+	t_image			east;
+	t_image			west;
+}					t_walls_img;
+
+typedef struct s_scene
+{
+	t_textures		textures;
+	t_walls_img		walls;
+	char			*map;
+	int				map_width;
+	int				map_height;
+}					t_scene;
+
+typedef struct s_coordinates
+{
+	float			x;
+	float			y;
+}					t_coordinates;
 
 typedef struct s_player
 {
@@ -66,12 +75,14 @@ typedef struct s_game
 	void			*mlx;
 	void			*window;
 	t_image			render;
+	t_image			render_hud;
 	int				screen_height;
 	int				screen_width;
 	t_player		player;
 	t_scene			scene;
 }					t_game;
 
+# include "cleanup.h"
 # include "events.h"
 # include "init.h"
 # include "libft.h"
