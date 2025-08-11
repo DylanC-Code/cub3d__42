@@ -52,6 +52,8 @@ SRCS := $(addprefix $(SRCS_DIR), \
 		render/player.c \
 		render/render_utils.c \
 		\
+		parsing/parsing.c \
+		\
 		utils/error.c \
 		\
 		main.c \

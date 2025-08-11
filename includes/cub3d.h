@@ -88,6 +88,7 @@ typedef struct s_game
 # include "libft.h"
 # include "mlx.h"
 # include "render.h"
+# include "parsing.h"
 # include "utils.h"
 # include <X11/X.h>
 # include <X11/keysym.h>

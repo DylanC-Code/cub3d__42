@@ -27,20 +27,22 @@ int	main(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 	ft_bzero(&game, sizeof(t_game));
-	game.scene.map = (char *)map;
-	game.scene.map_height = 10;
-	game.scene.map_width = 10;
-	game.player.pos.x = 5;
-	game.player.pos.y = 5;
-	game.player.angle = PI / 2;
-	game.player.delta.x = cos(game.player.angle) * MOVE_SPEED;
-	game.player.delta.y = -sin(game.player.angle) * MOVE_SPEED;
-	// init_map(argc, argv);
-	init_game(&game);
-	// check_args(argc, argv);
-	handle_events(&game);
-	// mlx_loop_hook(game.mlx, render_frame, &game);
-	mlx_loop_hook(game.mlx, display_game, &game);
-	mlx_loop(game.mlx);
+	// game.scene.map = (char *)map;
+	// game.scene.map_height = 10;
+	// game.scene.map_width = 10;
+	// game.player.pos.x = 5;
+	// game.player.pos.y = 5;
+	// game.player.angle = PI / 2;
+	// game.player.delta.x = cos(game.player.angle) * MOVE_SPEED;
+	// game.player.delta.y = -sin(game.player.angle) * MOVE_SPEED;
+	// // init_map(argc, argv);
+	// init_game(&game);
+	// // check_args(argc, argv);
+	// handle_events(&game);
+	// // mlx_loop_hook(game.mlx, render_frame, &game);
+	// mlx_loop_hook(game.mlx, display_game, &game);
+	// mlx_loop(game.mlx);
+	check_map(argv[1]);
 	return (EXIT_SUCCESS);
+	
 }
