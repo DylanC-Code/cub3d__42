@@ -39,6 +39,7 @@ SRCS = $(addprefix $(SRCS_DIR), \
 	memory/ft_memchr.c \
 	memory/ft_memcmp.c \
 	memory/ft_calloc.c \
+	memory/garbage.c \
 	\
 	number/ft_abs.c \
 	number/ft_max.c \
@@ -78,6 +79,7 @@ SRCS = $(addprefix $(SRCS_DIR), \
 	utils/ft_uitoa.c \
 	utils/quick_sort.c \
 	utils/gnl/get_next_line.c \
+	utils/gnl/get_next_line_part2.c \
 	\
 	output/ft_putchar_fd.c \
 	output/ft_putstr_fd.c \

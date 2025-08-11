@@ -14,6 +14,7 @@
 # define MEMORY_H
 
 # include <sys/types.h>
+# include <stdio.h>
 
 typedef struct s_garbage
 {
