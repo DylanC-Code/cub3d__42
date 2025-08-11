@@ -49,7 +49,6 @@ int is_valid_direction(char *dir)
 	if (ft_strncmp(dir, "NO", 2) == 0 || ft_strncmp(dir, "SO", 2) == 0 ||
 		 ft_strncmp(dir, "WE", 2) == 0 || ft_strncmp(dir, "EA", 2) == 0)
 		return (1);
-
 	return (0);
 }
 int only_whitespace_after(char *line)
@@ -124,7 +123,7 @@ int check_textures(char *line, t_scene *scene, int *counter)
 		{
 			while(is_space(line[i]))
 				i++;
-			return (*counter)++, get_texture_path(line, &scene->textures);
+			return (*counter)++, get_texture_path(line, scene->textures);
 		}
 		else
 			return 0;
@@ -152,8 +151,6 @@ int check_format(int fd, t_scene *scene)
 			break;
 		line = get_next_line(fd);
 	}
-	if(line)
-		free(line);
 	return ret;
 }
 void	print_textures(t_textures *tex)
@@ -169,14 +166,14 @@ void	print_textures(t_textures *tex)
 int check_map(char *filename)
 {
 	int fd;
-	t_textures tex = {0};
-	t_scene scene;
+	t_scene *scene = malloc(sizeof(t_scene));
+	t_textures *tex = malloc(sizeof(t_textures));
 
-	scene.textures = tex;
+	scene->textures = tex;
 	fd = open(filename, O_RDONLY);
 	if(fd == -1)
 		return 0;
-	int ret = check_format(fd, &scene);
-	print_textures(&tex);
+	int ret = check_format(fd, scene);
+	print_textures(scene->textures);
 	return ret;
 }

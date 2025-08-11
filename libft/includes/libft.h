@@ -6,14 +6,13 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 16:13:30 by dcastor           #+#    #+#             */
-/*   Updated: 2025/06/23 20:44:52 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/05/27 16:58:19 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include "memory.h"
 # include "bit.h"
 # include "char.h"
 # include "dlist.h"

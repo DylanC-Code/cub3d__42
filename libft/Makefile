@@ -6,7 +6,7 @@
 #    By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/09 16:35:34 by dcastor           #+#    #+#              #
-#    Updated: 2025/07/25 11:01:51 by dcastor          ###   ########.fr        #
+#    Updated: 2025/06/12 12:50:23 by dcastor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -MMD
 
 NAME = libft.a
-OPTIONS = -c -I ./includes -I ../includes/
+OPTIONS = -c -I ./includes
 
 SRCS_DIR = srcs/
 BUILD_DIR = build/
@@ -39,7 +39,6 @@ SRCS = $(addprefix $(SRCS_DIR), \
 	memory/ft_memchr.c \
 	memory/ft_memcmp.c \
 	memory/ft_calloc.c \
-	memory/garbage.c \
 	\
 	number/ft_abs.c \
 	number/ft_max.c \
@@ -54,7 +53,6 @@ SRCS = $(addprefix $(SRCS_DIR), \
 	string/ft_strlcpy.c \
 	string/ft_strlcat.c \
 	string/ft_strchr.c \
-	string/ft_ischarset.c \
 	string/ft_strrchr.c \
 	string/ft_strncmp.c \
 	string/ft_strcmp.c \
@@ -103,7 +101,6 @@ SRCS = $(addprefix $(SRCS_DIR), \
 	validate/ft_isalnum.c \
 	validate/ft_isascii.c \
 	validate/ft_isprint.c \
-	validate/ft_isspace.c \
 	validate/is_valid_number.c \
 )
 

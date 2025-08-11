@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:49:54 by dcastor           #+#    #+#             */
-/*   Updated: 2025/06/23 14:45:06 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/05/26 10:36:32 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ int	ft_atoi(const char *nptr)
 	char	*ptr;
 	int		res;
 
-	if (!nptr)
-		return (0);
 	ptr = jump_whitespaces((char *)nptr);
 	sign = 1;
 	res = 0;

@@ -6,14 +6,14 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 10:01:19 by dcastor           #+#    #+#             */
-/*   Updated: 2025/06/24 09:28:51 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/05/22 12:14:41 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "strs.h"
 
-char	*ft_strjoin(char const *s1, char const *s2, t_garbage **gc)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	const size_t	s1_len = ft_strlen(s1);
 	const size_t	s2_len = ft_strlen(s2);
@@ -21,7 +21,7 @@ char	*ft_strjoin(char const *s1, char const *s2, t_garbage **gc)
 	char			*str;
 	size_t			i;
 
-	str = gc_malloc(total_len + 1, gc);
+	str = malloc(total_len + 1);
 	if (str == NULL)
 		return (NULL);
 	i = -1;

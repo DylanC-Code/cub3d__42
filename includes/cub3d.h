@@ -28,7 +28,7 @@ typedef struct s_textures
 
 typedef struct s_scene
 {
-	t_textures		textures;
+	t_textures		*textures;
 	char			*map;
 	int				map_width;
 	int				map_height;
