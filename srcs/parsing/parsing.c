@@ -12,6 +12,7 @@
 
 #include "../includes/cub3d.h"
 
+
 char	*s_strndup(char *s, size_t n)
 {
 	size_t	i;
@@ -79,19 +80,21 @@ int set_texture(char *line, t_textures *st, int path_i, int len)
 		st->west = path;
 	else if(line[i] == 'E')
 		st->east = path;
+	else if(line[i] == 'F' || line[i] == 'C')
+		return set_color(line[i], path, st);
 	else
-	{
-		free(path);
 		return 0;
-	}
-	return 1;
+	return  1;
+	// free path si rien n'est set
 }
 
 int get_texture_path(char *line, t_textures *st)
 {
 	int i;
 	int k;
+	int ret;
 
+	ret = 1;
 	i = 0;
 	while(is_space(line[i]))
 			i++;
@@ -105,10 +108,10 @@ int get_texture_path(char *line, t_textures *st)
 	while(!is_space(line[i]) && line[i])
 		i++;
 	if(only_whitespace_after(&line[i]))
-		set_texture(line, st, k, i - k);
+		ret = set_texture(line, st, k, i - k);
 	else
 		return 0;
-	return 1;
+	return ret;
 }
 int check_textures(char *line, t_scene *scene, int *counter)
 {
@@ -145,12 +148,14 @@ int check_format(int fd, t_scene *scene)
 		if(counter != 6)
 			ret = check_textures(line, scene, &counter);
 		else
-			//check_map
+			parse_map_line(line);
 		free(line);
 		if(!ret)
 			break;
 		line = get_next_line(fd);
 	}
+	if(counter != 6)
+		return 0;
 	return ret;
 }
 void	print_textures(t_textures *tex)
@@ -168,6 +173,7 @@ int check_map(char *filename)
 	int fd;
 	t_scene *scene = malloc(sizeof(t_scene));
 	t_textures *tex = malloc(sizeof(t_textures));
+	//t_map_data *map = malloc(sizeof(t_map_data));
 
 	scene->textures = tex;
 	fd = open(filename, O_RDONLY);

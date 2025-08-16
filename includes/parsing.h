@@ -16,6 +16,17 @@
 
 #include <fcntl.h>
 
+typedef struct s_map_data
+{
+	char *line;
+	int length;
+	struct s_map_data *next;
+} t_map_data;
+
 int check_map(char *filename);
+int is_space(char c);
+t_map_data *parse_map_line(char *line);
+int only_whitespace_after(char *line);
+int set_color(char id, char *color, t_textures *st);
 
 #endif

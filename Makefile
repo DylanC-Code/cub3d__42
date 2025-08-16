@@ -53,6 +53,8 @@ SRCS := $(addprefix $(SRCS_DIR), \
 		render/render_utils.c \
 		\
 		parsing/parsing.c \
+		parsing/map_parsing.c \
+		parsing/colors.c \
 		\
 		utils/error.c \
 		\
