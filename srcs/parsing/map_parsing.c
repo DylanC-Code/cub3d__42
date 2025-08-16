@@ -59,6 +59,22 @@ void ft_map_add_back(t_map_data **lst, t_map_data *new)
 		actual = actual->next;
 	actual->next = new;
 }
+int is_empty_line(char *line)
+{
+	int i;
+
+	i = 0;
+	while(line[i])
+	{
+		if(is_space(line[i]))
+			i++;
+		else
+			break ;
+	}
+	if(line[i] == '\n' || !line[i])
+		return 1;
+	return 0;
+}
 
 t_map_data *parse_map_line(char *line)
 {
@@ -66,7 +82,7 @@ t_map_data *parse_map_line(char *line)
 	t_map_data *elem;
 
 	data = NULL;
-	if(is_valid_line(line))
+	if(!is_empty_line(line) && is_valid_line(line))
 	{
 		elem = new_elem(line);
 		if(!elem)
@@ -84,7 +100,7 @@ t_map_data *parse_map_line(char *line)
 	t_map_data *temp = data;
 	while (temp)
 	{
-		//printf("[line] %s\n[len] %d\n", temp->line, temp->length);
+		printf("[line] %s\n[len] %d\n", temp->line, temp->length);
 		temp = temp->next;
 	}
 	return data;

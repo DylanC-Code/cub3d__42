@@ -28,5 +28,7 @@ int is_space(char c);
 t_map_data *parse_map_line(char *line);
 int only_whitespace_after(char *line);
 int set_color(char id, char *color, t_textures *st);
+int is_empty_line(char *line);
+
 
 #endif
