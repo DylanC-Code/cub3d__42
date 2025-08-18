@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 10:31:24 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/17 20:02:04 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/18 14:32:15 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ int	main(int argc, char **argv)
 	game.scene.map = (char *)map;
 	game.scene.map_height = 10;
 	game.scene.map_width = 10;
-	game.scene.textures.east = ft_strdup("assets/wall.xpm");
-	game.scene.textures.west = ft_strdup("assets/wall_west.xpm");
+	game.scene.textures.east = ft_strdup("assets/wall_west.xpm");
+	game.scene.textures.west = ft_strdup("assets/wall_east.xpm");
 	game.scene.textures.south = ft_strdup("assets/wall_south.xpm");
 	game.scene.textures.north = ft_strdup("assets/wall_north.xpm");
 	game.player.pos.x = 5;
 	game.player.pos.y = 5;
-	game.player.angle = PI / 2;
+	game.player.angle = 3 * PI / 2;
 	game.player.delta.x = cos(game.player.angle) * MOVE_SPEED;
 	game.player.delta.y = -sin(game.player.angle) * MOVE_SPEED;
 	game.scene.textures.ceil_color = 0x0097E4EB;

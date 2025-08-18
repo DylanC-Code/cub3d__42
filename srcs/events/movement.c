@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 18:13:07 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/18 10:13:56 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/18 14:26:47 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ float	deg_to_rad(int a)
 
 void	move_right(t_game *game)
 {
-	game->player.angle -= 0.1;
+	game->player.angle += 0.1;
 	if (game->player.angle < 0)
 		game->player.angle += 2 * PI;
 	game->player.delta.x = cos(game->player.angle) * MOVE_SPEED;
@@ -28,7 +28,7 @@ void	move_right(t_game *game)
 
 void	move_left(t_game *game)
 {
-	game->player.angle += 0.1;
+	game->player.angle -= 0.1;
 	if (game->player.angle > 2 * PI)
 		game->player.angle -= 2 * PI;
 	game->player.delta.x = cos(game->player.angle) * MOVE_SPEED;
@@ -37,12 +37,12 @@ void	move_left(t_game *game)
 
 void	move_up(t_game *game)
 {
-	game->player.pos.y += game->player.delta.y;
+	game->player.pos.y -= game->player.delta.y;
 	game->player.pos.x += game->player.delta.x;
 }
 
 void	move_down(t_game *game)
 {
-	game->player.pos.y -= game->player.delta.y;
+	game->player.pos.y += game->player.delta.y;
 	game->player.pos.x -= game->player.delta.x;
 }

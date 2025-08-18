@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 15:07:49 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/18 10:10:58 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/18 14:08:08 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_ray_hit	horizontal_hit(t_game *game, t_raycaster *ray)
 
 	depth = 0;
 	pos = get_first_horizontal(ray, &step);
-	while (depth < 100)
+	while (depth < game->screen_height / TILE_SIZE)
 	{
 		map.x = (int)(pos.x) / TILE_SIZE;
 		map.y = (int)(pos.y) / TILE_SIZE;

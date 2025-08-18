@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 15:33:58 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/18 10:11:08 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/18 14:07:58 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_ray_hit	vertical_hit(t_game *game, t_raycaster *ray)
 
 	depth = 0;
 	pos = get_first_vertical(ray, &step);
-	while (depth < 8)
+	while (depth < game->screen_width / TILE_SIZE)
 	{
 		map.x = (int)(pos.x) >> 5;
 		map.y = (int)(pos.y) >> 5;
