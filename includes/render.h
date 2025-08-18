@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 21:52:55 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/10 14:14:01 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/18 10:20:28 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,8 @@ float			wall_u(t_raycaster *ray);
 
 void			render_wall_column(t_game *game, int ray_index,
 					float cast_angle, t_raycaster *ray);
-void			draw_vspan_color(t_game *g, int x0, int x1, int y0, int y1,
-					int color);
-void			draw_textured_span(t_game *g, t_image *tex, int x0, int x1,
-					int y0, int y1, int tx, float v0, float vstep, float shade);
+// void			draw_vspan_color(t_game *g, int x0, int x1, int y0, int y1,
+// 					int color);
+void	draw_vspan_color(t_game *g, t_coordinates *start, t_coordinates *end, int color);
 
 #endif

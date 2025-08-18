@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 15:07:49 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/09 11:36:45 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/18 10:10:58 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,7 @@ t_ray_hit	horizontal_hit(t_game *game, t_raycaster *ray)
 	{
 		map.x = (int)(pos.x) / TILE_SIZE;
 		map.y = (int)(pos.y) / TILE_SIZE;
-		if (map.x >= 0 && map.y >= 0 && map.y < game->scene.map_height
-			&& map.x < game->scene.map_width && game->scene.map[(int)map.y
-			* game->scene.map_width + (int)map.x] == WALL)
+		if (is_in_map(game, map))
 		{
 			hit.pos = pos;
 			hit.distance = get_distance(&ray->origin, &pos);

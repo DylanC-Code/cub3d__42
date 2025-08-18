@@ -6,13 +6,13 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 18:13:07 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/27 12:22:34 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/18 10:13:56 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-float	degToRad(int a)
+float	deg_to_rad(int a)
 {
 	return (a * PI / 180.0);
 }

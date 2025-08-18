@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 21:48:05 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/10 10:52:42 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/18 10:26:58 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ void	put_line(t_image *img, t_coordinates *start, t_coordinates *end,
 
 	delta.x = end->x - start->x;
 	delta.y = end->y - start->y;
-	steps = fabsf(delta.x) > fabsf(delta.y) ? fabsf(delta.x) : fabsf(delta.y);
+	if (fabsf(delta.x) > fabsf(delta.y))
+		steps = fabsf(delta.x);
+	else
+		steps = fabsf(delta.y);
 	pos_inc.x = delta.x / steps;
 	pos_inc.y = delta.y / steps;
 	cur_pos.x = start->x;
