@@ -97,11 +97,16 @@ t_map_data *parse_map_line(char *line)
 		// free prev
 		return NULL;
 	}
-	t_map_data *temp = data;
-	while (temp)
+	// t_map_data *temp = data;
+	// while (temp)
+	// {
+	// 	printf("[line] %s\n[len] %d\n", temp->line, temp->length);
+	// 	temp = temp->next;
+	// }
+	char **test = get_map(data, NULL);
+	for(int i = 0; test[i]; i++)
 	{
-		printf("[line] %s\n[len] %d\n", temp->line, temp->length);
-		temp = temp->next;
+		printf("%s", test[i]);
 	}
 	return data;
 }

@@ -181,5 +181,6 @@ int check_map(char *filename)
 		return 0;
 	int ret = check_format(fd, scene);
 	print_textures(scene->textures);
+
 	return ret;
 }

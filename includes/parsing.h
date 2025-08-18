@@ -16,6 +16,11 @@
 
 #include <fcntl.h>
 
+#define HEIGHT 0
+#define WIDTH 1
+#define HEIGHT_PADDING 4
+#define WIDTH_PADDING  4
+
 typedef struct s_map_data
 {
 	char *line;
@@ -29,6 +34,8 @@ t_map_data *parse_map_line(char *line);
 int only_whitespace_after(char *line);
 int set_color(char id, char *color, t_textures *st);
 int is_empty_line(char *line);
+char *clean_copy(char *str);
+char **get_map(t_map_data *map, t_scene *sc);
 
 
 #endif

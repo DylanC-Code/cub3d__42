@@ -43,6 +43,7 @@ int	main(int argc, char **argv)
 	// mlx_loop_hook(game.mlx, display_game, &game);
 	// mlx_loop(game.mlx);
 	check_map(argv[1]);
+
 	return (EXIT_SUCCESS);
 	
 }
