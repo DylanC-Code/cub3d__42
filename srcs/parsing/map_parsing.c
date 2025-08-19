@@ -39,7 +39,7 @@ t_map_data *new_elem(char *line)
 	elem = malloc(sizeof(t_map_data));
 	if(!elem)
 		return NULL;
-	elem->line = line;
+	elem->line = ft_strdup(line);
 	elem->length = is_valid_line(line);
 	elem->next = NULL;
 	return elem;
@@ -76,37 +76,28 @@ int is_empty_line(char *line)
 	return 0;
 }
 
-t_map_data *parse_map_line(char *line)
+int parse_map_line(char *line, t_map_data **data)
 {
-	t_map_data *data;
 	t_map_data *elem;
+	elem = NULL;
 
-	data = NULL;
 	if(!is_empty_line(line) && is_valid_line(line))
 	{
 		elem = new_elem(line);
 		if(!elem)
 		{
-			// free prev
-			return NULL;
+			// TODO: free prev
+			return 0;
 		}
-		ft_map_add_back(&data, elem);
-	}
-	else
-	{
-		// free prev
-		return NULL;
+		ft_map_add_back(data, elem);
 	}
 	// t_map_data *temp = data;
+	// static int test = 0;
 	// while (temp)
 	// {
-	// 	printf("[line] %s\n[len] %d\n", temp->line, temp->length);
+
+	// 	printf("[%d] [line] %s\n[len] %d\n",test++, temp->line, temp->length);
 	// 	temp = temp->next;
 	// }
-	char **test = get_map(data, NULL);
-	for(int i = 0; test[i]; i++)
-	{
-		printf("%s", test[i]);
-	}
-	return data;
+	return 1;
 }

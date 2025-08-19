@@ -139,16 +139,18 @@ int check_format(int fd, t_scene *scene)
 	char *line;
 	int counter;
 	int ret;
+	t_map_data *data;
 
 	ret = 1;
 	counter = 0;
 	line = get_next_line(fd);
+	data = NULL;
 	while(line)
 	{
 		if(counter != 6)
 			ret = check_textures(line, scene, &counter);
 		else
-			parse_map_line(line);
+			ret = parse_map_line(line, &data);
 		free(line);
 		if(!ret)
 			break;
@@ -156,6 +158,14 @@ int check_format(int fd, t_scene *scene)
 	}
 	if(counter != 6)
 		return 0;
+	 t_map_data *temp = data;
+	// for(; temp->next; temp = temp->next)
+	// 	printf("[%d] %s\n", temp->length, temp->line);
+	char **test = get_map(temp, NULL);
+	for(int i = 0; test[i]; i++)
+	{
+		printf("%s\n", test[i]);
+	}
 	return ret;
 }
 void	print_textures(t_textures *tex)
@@ -180,7 +190,7 @@ int check_map(char *filename)
 	if(fd == -1)
 		return 0;
 	int ret = check_format(fd, scene);
-	print_textures(scene->textures);
+	//print_textures(scene->textures);
 
 	return ret;
 }

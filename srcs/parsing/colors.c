@@ -90,7 +90,7 @@ int check_color_format(char *line)
 		}
 		i++;
 	}
-	printf("[VALID : %d] %s\n", valid, line);
+	//printf("[VALID : %d] %s\n", valid, line);
 	if (i != 3)
 		valid = 0;
 	free_arr(colors);

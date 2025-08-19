@@ -56,6 +56,7 @@ SRCS := $(addprefix $(SRCS_DIR), \
 		parsing/map_parsing.c \
 		parsing/colors.c \
 		parsing/validation.c \
+		parsing/floodfill.c \
 		\
 		utils/error.c \
 		\

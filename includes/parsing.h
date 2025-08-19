@@ -30,12 +30,13 @@ typedef struct s_map_data
 
 int check_map(char *filename);
 int is_space(char c);
-t_map_data *parse_map_line(char *line);
+int parse_map_line(char *line, t_map_data **data);
 int only_whitespace_after(char *line);
 int set_color(char id, char *color, t_textures *st);
 int is_empty_line(char *line);
 char *clean_copy(char *str);
 char **get_map(t_map_data *map, t_scene *sc);
+int flood_fill_asdf(char **map, int *dimensions, int x, int y);
 
 
 #endif
