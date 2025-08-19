@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 14:38:01 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/18 14:18:22 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/19 10:15:57 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ void	launch_rays(t_game *game)
 		cast_single_ray(game, &ray);
 		determine_side(&ray.hit, ray.angle);
 		put_line(&game->render_hud, &ray.origin, &ray.hit.pos, 0x33ff0000);
-		render_wall_column(game, screen_x, ray.angle, &ray);
+		render_wall_column(game, screen_x, &ray);
 	}
 }

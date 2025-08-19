@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 10:24:28 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/18 10:02:12 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/19 10:05:08 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ static void	free_scene_data(t_scene *s)
 	free(s->textures.south);
 	free(s->textures.east);
 	free(s->textures.west);
+	// free(s->map);
 	s->textures.north = NULL;
 	s->textures.south = NULL;
 	s->textures.east = NULL;
 	s->textures.west = NULL;
-	// free(s->map);
 	s->map = NULL;
 }
 
@@ -54,9 +54,15 @@ int	free_and_exit(t_game *g, int code)
 		destroy_wall_images(g);
 		free_scene_data(&g->scene);
 		if (g->window)
+		{
+			mlx_clear_window(g->mlx, g->window);
 			mlx_destroy_window(g->mlx, g->window);
+		}
 		if (g->mlx)
+		{
 			mlx_destroy_display(g->mlx);
+			free(g->mlx);
+		}
 		g->mlx = NULL;
 	}
 	exit(code);

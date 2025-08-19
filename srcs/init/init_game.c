@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 20:55:40 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/10 10:14:44 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/19 10:10:25 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_game(t_game *game)
 			game->screen_height, "cub3d");
 	if (!game->window)
 		exit_error("mlx_init", game);
+	init_player(game);
 	load_walls_textures(game);
 	create_image(game, &game->render, game->screen_width, game->screen_height);
 	create_image(game, &game->render_hud, game->scene.map_width * TILE_SIZE,

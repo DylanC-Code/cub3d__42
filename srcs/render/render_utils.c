@@ -6,16 +6,29 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 21:48:05 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/18 10:26:58 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/19 11:35:15 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// static int	abs_val(int x)
-// {
-// 	return (x < 0 ? -x : x);
-// }
+unsigned int	get_shaded_texel(unsigned int texel, float shade)
+{
+	int		r;
+	int		g;
+	int		b;
+	float	s;
+
+	if (shade < 0.0f)
+		shade = 0.0f;
+	if (shade > 0.85f)
+		shade = 0.85f;
+	s = 1.0f - shade;
+	r = (int)(((texel >> 16) & 0xFF) * s);
+	g = (int)(((texel >> 8) & 0xFF) * s);
+	b = (int)((texel & 0xFF) * s);
+	return ((r << 16) | (g << 8) | b);
+}
 
 void	create_image(t_game *game, t_image *image, int width, int height)
 {

@@ -6,116 +6,103 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 14:11:41 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/18 10:28:39 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/19 11:38:29 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static unsigned int	get_shaded_texel(unsigned int texel, float shade)
+static void	draw_ceil(t_game *g, t_rcol *rc)
 {
-    int	r;
-    int	g;
-    int	b;
+	t_coordinates	s;
+	t_coordinates	e;
 
-    if (shade < 0.0f)
-        shade = 0.0f;
-    if (shade > 0.85f)
-        shade = 0.85f;
-    r = (int)(((texel >> 16) & 0xFF) * (1.0f - shade));
-    g = (int)(((texel >> 8) & 0xFF) * (1.0f - shade));
-    b = (int)((texel & 0xFF) * (1.0f - shade));
-    return ((r << 16) | (g << 8) | b);
+	if (rc->top <= 0)
+		return ;
+	s.x = rc->x;
+	s.y = 0;
+	e.x = rc->x + 1;
+	e.y = rc->top - 1;
+	draw_vspan_color(g, &s, &e, g->scene.textures.ceil_color);
 }
 
-static void	draw_wall_tex(t_game *game, t_image *tex, int screen_x,
-        t_raycaster *ray, int top, int bot, float shade)
+static void	draw_floor(t_game *g, t_rcol *rc)
 {
-    int				tx;
-    float			vstep;
-    float			v;
-    int				y;
-    int				ty;
-    unsigned int	texel;
-    unsigned int	shaded;
-    t_coordinates	p;
+	t_coordinates	s;
+	t_coordinates	e;
 
-    tx = (int)(wall_u(ray) * (float)(tex->width - 1));
-    if (tx < 0)
-        tx = 0;
-    if (tx >= tex->width)
-        tx = tex->width - 1;
-    vstep = (float)tex->height / (float)(bot - top + 1);
-    v = (top < 0) ? (-top) * vstep : 0.0f;
-    p.x = screen_x;
-    y = top;
-    while (y <= bot)
-    {
-        ty = (int)v;
-        texel = get_texel(tex, tx, ty);
-        shaded = get_shaded_texel(texel, shade);
-        p.y = y;
-        put_pixel(&game->render, &p, shaded);
-        v += vstep;
-        y++;
-    }
+	if (rc->bot >= g->screen_height - 1)
+		return ;
+	s.x = rc->x;
+	s.y = rc->bot + 1;
+	e.x = rc->x + 1;
+	e.y = g->screen_height - 1;
+	draw_vspan_color(g, &s, &e, g->scene.textures.floor_color);
 }
 
-void	render_wall_column(t_game *game, int ray_index, float cast_angle,
-        t_raycaster *ray)
+static void	wall_setup(t_wdraw *wd, t_image *tex, t_raycaster *ray, t_rcol *rc)
 {
-    t_image	*tex;
-    int		screen_x;
-    float	proj_dist;
-    float	dist;
-    int		wall_h;
-    int		top;
-    int		bot;
-    float	shade;
+	float	u;
+	int		w;
 
-    (void)cast_angle;
-    screen_x = ray_index;
-    if (screen_x < 0 || screen_x >= game->screen_width)
-        return ;
-    dist = ray->hit.distance;
-    if (dist < 0.0001f)
-        dist = 0.0001f;
-    proj_dist = ((float)game->screen_width * 0.5f) / tanf(FOV * 0.5f);
-    wall_h = (int)((TILE_SIZE * proj_dist) / dist);
-    top = (game->screen_height / 2) - (wall_h / 2);
-    bot = top + wall_h - 1;
-    if (top < 0)
-        top = 0;
-    if (bot >= game->screen_height)
-        bot = game->screen_height - 1;
-    if (top > 0)
-    {
-        t_coordinates s;
-        t_coordinates e;
-        s.x = screen_x;
-        s.y = 0;
-        e.x = screen_x + 1;
-        e.y = top - 1;
-        draw_vspan_color(game, &s, &e, game->scene.textures.ceil_color);
-    }
-    tex = pick_wall_tex(&game->scene, ray->hit.side);
-    if (tex)
-    {
-        shade = dist / (TILE_SIZE * 8.0f);
-        if (ray->hit.side == SIDE_EAST || ray->hit.side == SIDE_WEST)
-            shade += 0.08f;
-        if (shade > 0.85f)
-            shade = 0.85f;
-        draw_wall_tex(game, tex, screen_x, ray, top, bot, shade);
-    }
-    if (bot < game->screen_height - 1)
-    {
-        t_coordinates s;
-        t_coordinates e;
-        s.x = screen_x;
-        s.y = bot + 1;
-        e.x = screen_x + 1;
-        e.y = game->screen_height - 1;
-        draw_vspan_color(game, &s, &e, game->scene.textures.floor_color);
-    }
+	w = tex->width - 1;
+	u = wall_u(ray);
+	wd->tx = (int)(u * (float)w);
+	if (wd->tx < 0)
+		wd->tx = 0;
+	if (wd->tx > w)
+		wd->tx = w;
+	wd->vstep = (float)tex->height / (float)(rc->wall_h);
+	wd->v = (float)(rc->top - rc->top_raw) * wd->vstep;
+}
+
+static void	wall_draw_span(t_game *g, t_image *t, t_wdraw *wd)
+{
+	int				y;
+	int				ty;
+	unsigned int	texel;
+	unsigned int	shaded;
+	t_coordinates	p;
+
+	y = wd->top;
+	p.x = wd->x;
+	while (y <= wd->bot)
+	{
+		ty = (int)wd->v;
+		texel = get_texel(t, wd->tx, ty);
+		shaded = get_shaded_texel(texel, wd->shade);
+		p.y = y;
+		put_pixel(&g->render, &p, shaded);
+		wd->v += wd->vstep;
+		y++;
+	}
+}
+
+void	render_wall_column(t_game *g, int ray_index, t_raycaster *ray)
+{
+	t_rcol	rc;
+	t_image	*tex;
+	t_wdraw	wd;
+
+	if (ray_index < 0 || ray_index >= g->screen_width)
+		return ;
+	rc.x = ray_index;
+	rc.dist = ray->hit.distance;
+	if (rc.dist < 0.0001f)
+		rc.dist = 0.0001f;
+	rc.proj = proj_distance(g->screen_width);
+	set_bounds(&rc, g);
+	draw_ceil(g, &rc);
+	tex = pick_wall_tex(&g->scene, ray->hit.side);
+	if (tex)
+	{
+		rc.shade = compute_shade(rc.dist, ray->hit.side);
+		wd.x = rc.x;
+		wd.top = rc.top;
+		wd.bot = rc.bot;
+		wd.shade = rc.shade;
+		wall_setup(&wd, tex, ray, &rc);
+		wall_draw_span(g, tex, &wd);
+	}
+	draw_floor(g, &rc);
 }

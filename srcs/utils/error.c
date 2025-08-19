@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 10:45:15 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/25 21:50:37 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/19 10:00:06 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ft_error(char *msg)
 
 void	exit_error(char *msg, t_game *game)
 {
-	(void)game;
 	ft_error(msg);
-	exit(EXIT_FAILURE);
+	exit_game(game);
 }
