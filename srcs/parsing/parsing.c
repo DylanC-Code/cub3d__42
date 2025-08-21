@@ -339,7 +339,7 @@ int	process_element(char *line, t_scene *scene, int *counter)
 	(*counter)++;
 	result = extract_element_data(line, scene->textures);
 	if (!result)
-		return (write(2, "Error\nCouldn't parse .cub file properly\n", 36), 0);
+		return (write(2, "Error\nCouldn't parse .cub file properly\n", 41), 0);
 	return (result);
 }
 

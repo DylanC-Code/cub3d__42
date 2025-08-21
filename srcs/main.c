@@ -53,7 +53,7 @@ int	main(int argc, char **argv)
 		char *map = map_to_string(scene->map);
 		if (map)
 		{
-			printf("char*map:\n%s\n", map);
+			printf("char* map:\n%s\n", map);
 			free(map);
 		}
 	}
