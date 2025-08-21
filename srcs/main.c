@@ -53,7 +53,7 @@ int	main(int argc, char **argv)
 		char *map = map_to_string(scene->map);
 		if (map)
 		{
-			printf("char* map:\n%s\n", map);
+			printf("[H: %d] [W: %d]\n char* map:\n%s\n", scene->map_height, scene->map_width, map);
 			free(map);
 		}
 	}

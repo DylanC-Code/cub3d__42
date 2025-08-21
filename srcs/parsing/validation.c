@@ -405,5 +405,7 @@ char	**get_map(t_map_data *map, t_scene *sc)
 		return (free_dup(new_map, total_height), NULL);
 	if (validate_map(new_map, map_dimensions) == ERROR)
 		return (free_dup(new_map, total_height), NULL);
+	sc->map_height = map_dimensions[HEIGHT];
+	sc->map_width = map_dimensions[WIDTH];
 	return (new_map);
 }
