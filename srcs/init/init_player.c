@@ -15,9 +15,8 @@
 void set_player_pos(t_game*g)
 {
 	char *pos=ft_str_contains_any(g->scene.map, "SWEN");
-	g->player.pos.x = (pos - g->scene.map) % (g->scene.map_width + WIDTH_PADDING);
-	g->player.pos.y = (pos - g->scene.map) / (g->scene.map_height + HEIGHT_PADDING);
-	printf("%f\n", g->player.pos.x);
+    g->player.pos.x = (pos - g->scene.map) % g->scene.map_width;
+    g->player.pos.y = (pos - g->scene.map) / g->scene.map_width;
 }
 void	init_player(t_game *g)
 {

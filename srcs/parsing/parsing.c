@@ -253,40 +253,6 @@ int	set_element_data(t_textures *st, char *line, char *data)
 	return (free(trimmed), 0);
 }
 
-// int	extract_element_data(char *line, t_textures *st)
-// {
-// 	int		i;
-// 	int		start;
-// 	int		end;
-// 	char	*data;
-// 	int		id;
-
-// 	i = 0;
-// 	while (is_space(line[i]))
-// 		i++;
-// 	while (line[i] && !is_space(line[i]))
-// 		i++;
-// 	while (is_space(line[i]))
-// 		i++;
-// 	if (!line[i] || line[i] == '\n')
-// 		return (0);
-// 	start = i;
-// 	id = get_texture_id(line, 0);
-// 	if (id == 4 || id == 5)
-// 		while (line[i] && line[i] != '\n')
-// 			i++;
-// 	else
-// 		while (line[i] && !is_space(line[i]) && line[i] != '\n')
-// 			i++;
-// 	end = i;
-// 	if (!only_spaces(&line[i]))
-// 		return (0);
-// 	data = s_strndup(line + start, end - start);
-// 	if (!data)
-// 		return (0);
-// 	return (set_element_data(st, line, data));
-// }
-
 int	skip_elem_spaces(char *line)
 {
 	int	i;
@@ -305,29 +271,23 @@ int	extract_element_data(char *line, t_textures *st)
 {
 	int		i;
 	int		start;
-	int		end;
 	char	*data;
-	int		id;
 
 	i = skip_elem_spaces(line);
 	if (!line[i] || line[i] == '\n')
 		return (0);
 	start = i;
-	id = get_texture_id(line, 0);
-	if (id == 4 || id == 5)
-		while (line[i] && line[i] != '\n')
-			i++;
-	else
-		while (line[i] && !is_space(line[i]) && line[i] != '\n')
-			i++;
-	end = i;
-	if (!only_spaces(&line[i]))
-		return (0);
-	data = s_strndup(line + start, end - start);
+	
+	while (line[i] && line[i] != '\n')
+		i++;
+	
+	data = s_strndup(line + start, i - start);
 	if (!data)
 		return (0);
 	return (set_element_data(st, line, data));
 }
+
+
 int	process_element(char *line, t_scene *scene, int *counter)
 {
 	int	result;
@@ -478,21 +438,6 @@ int	load_file(int fd, t_scene *scene)
 	return (1);
 }
 
-void	print_textures(t_textures *tex)
-{
-	if (!tex)
-	{
-		printf("Null struct ptr\n");
-		return ;
-	}
-	printf("North texture: %s\n", tex->north ? tex->north : "(none)");
-	printf("South texture: %s\n", tex->south ? tex->south : "(none)");
-	printf("West texture: %s\n", tex->west ? tex->west : "(none)");
-	printf("East texture: %s\n", tex->east ? tex->east : "(none)");
-	printf("Floor color: %d\n", tex->floor_color);
-	printf("Ceiling color: %d\n", tex->ceil_color);
-}
-
 int	check_map(char *filename, t_scene *scene)
 {
 	int			fd;
@@ -507,7 +452,7 @@ int	check_map(char *filename, t_scene *scene)
 	close(fd);
 	if (!ret)
 		return (0);
-	scene->map = map_to_string(scene->arr_map);
+	scene->map = map_to_string(scene->arr_map, scene->map_height, scene->map_width);
 	if(!scene->map)
 		return (write(2, "Error\nMalloc allocation failed\n", 32), 0);
 	clear_map(scene->map);

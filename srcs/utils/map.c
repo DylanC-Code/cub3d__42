@@ -12,42 +12,24 @@
 
 #include "../includes/utils.h"
 
-char	*join_and_free(char *s1, char *s2)
+char *map_to_string(char **map, int height, int width)
 {
-	char	*result;
+	char *result;
+	int total_size = height * width;
+	int pos = 0;
 
-	result = ft_strjoin(s1, s2);
-	if(!result)
-		return (free(s1), NULL);
-	free(s1);
-	return (result);
-}
-
-char	*map_to_string(char **map)
-{
-	char	*result;
-	int		i;
-
-	if (!map || !map[0])
+	result = malloc(total_size + 1);
+	if (!result)
 		return (NULL);
-	// result = ft_strdup("");
-	// if (!result)
-	// 	return (NULL);
-	result = NULL;
-	i = 0;
-	while (map[i])
+
+	for (int i = 0; i < height; i++)
 	{
-		result = join_and_free(result, map[i]);
-		if (!result)
-			return (NULL);
-		if (map[i + 1])
+		for (int j = 0; j < width; j++)
 		{
-			result = join_and_free(result, "");
-			if (!result)
-				return (NULL);
+			result[pos++] = map[i][j];
 		}
-		i++;
 	}
+	result[total_size] = '\0';
 	return (result);
 }
 

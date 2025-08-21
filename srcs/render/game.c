@@ -14,7 +14,7 @@
 
 int	display_game(t_game *game)
 {
-	 display_hud(game);
+	display_hud(game);
 	launch_rays(game);
 	mlx_put_image_to_window(game->mlx, game->window, game->render.img, 0, 0);
 	 mlx_put_image_to_window(game->mlx, game->window, game->render_hud.img, 0,
