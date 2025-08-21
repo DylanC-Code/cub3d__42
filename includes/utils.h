@@ -15,5 +15,6 @@
 
 void	ft_error(char *msg);
 void	exit_error(char *msg, t_game *game);
+char	*map_to_string(char **map);
 
 #endif

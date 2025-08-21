@@ -43,6 +43,7 @@ SRCS := $(addprefix $(SRCS_DIR), \
 		parsing/validation.c \
 		\
 		utils/error.c \
+		utils/map.c \
 		\
 		main.c \
 )

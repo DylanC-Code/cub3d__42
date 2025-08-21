@@ -49,8 +49,12 @@ int	main(int argc, char **argv)
 	if(scene)
 	{
 		for(int i = 0; scene->map[i] ; i++)
-		{
 			printf("map[%d]: %s\n", i, scene->map[i]);
+		char *map = map_to_string(scene->map);
+		if (map)
+		{
+			printf("char*map:\n%s\n", map);
+			free(map);
 		}
 	}
 	free_scene(scene);

@@ -1,11 +1,11 @@
-N			textures/n.xpm 
+N		textures/n.xpm 
 
 S	 textures/s.xpm
 
 
 W textures/w.xpm
 
-E textures/ee.xpm
+E textures/e.xpm
 F      0,  2   ,  1
 C 255, 255, 255
 
