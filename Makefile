@@ -37,26 +37,10 @@ RM := rm -rf
 
 # 📁 Sources & Objets
 SRCS := $(addprefix $(SRCS_DIR), \
-		events/events.c \
-		events/exit.c \
-		events/inputs.c \
-		events/movement.c \
-		\
-		init/init_args.c \
-		init/init_game.c \
-		\
-		render/background.c \
-		render/game.c \
-		render/hud.c \
-		render/map.c \
-		render/player.c \
-		render/render_utils.c \
-		\
 		parsing/parsing.c \
 		parsing/map_parsing.c \
 		parsing/colors.c \
 		parsing/validation.c \
-		parsing/floodfill.c \
 		\
 		utils/error.c \
 		\

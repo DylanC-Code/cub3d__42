@@ -38,9 +38,9 @@ static void	*jump_whitespaces(char *s)
 
 int	ft_atoi(const char *nptr)
 {
-	int		sign;
-	char	*ptr;
-	int		res;
+	int				sign;
+	char			*ptr;
+	long long		res;
 
 	ptr = jump_whitespaces((char *)nptr);
 	sign = 1;

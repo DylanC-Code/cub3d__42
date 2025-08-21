@@ -1,14 +1,17 @@
-NOT test.texture 
-S XD
-E bonsoir
-W kek
-C 155,10,100
-F 100,200,10
+N			textures/n.xpm 
+
+S	 textures/s.xpm
 
 
+W textures/w.xpm
 
-11111111111
-10000001
-1001  01
-100001
+E textures/ee.xpm
+F      0,  2   ,  1
+C 255, 255, 255
+
 111111
+1010111
+100000011111 
+1E111 11
+11111111
+111

@@ -21,6 +21,8 @@
 #define HEIGHT_PADDING 4
 #define WIDTH_PADDING  4
 
+# define E_OPEN "Error\nCannot open file\n"
+
 typedef struct s_map_data
 {
 	char *line;
@@ -28,15 +30,12 @@ typedef struct s_map_data
 	struct s_map_data *next;
 } t_map_data;
 
-int check_map(char *filename);
-int is_space(char c);
-int parse_map_line(char *line, t_map_data **data);
-int only_whitespace_after(char *line);
-int set_color(char id, char *color, t_textures *st);
-int is_empty_line(char *line);
-char *clean_copy(char *str);
-char **get_map(t_map_data *map, t_scene *sc);
-int flood_fill_asdf(char **map, int *dimensions, int x, int y);
-
+t_scene		*check_map(char *filename);
+int			set_color(char id, char *color, t_textures *st);
+int			parse_map_line(char *line, t_map_data **data);
+int			is_empty_line(char *line);
+char		**get_map(t_map_data *map, t_scene *sc);
+int			validate_map_reqs(t_map_data *data);
+void	free_scene(t_scene *scene);
 
 #endif

@@ -24,12 +24,14 @@ typedef struct s_textures
 	char			*south;
 	int				floor_color;
 	int				ceil_color;
+	int				floor_set;
+	int				ceil_set;
 }					t_textures;
 
 typedef struct s_scene
 {
 	t_textures		*textures;
-	char			*map;
+	char			**map;
 	int				map_width;
 	int				map_height;
 }					t_scene;

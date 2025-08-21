@@ -23,10 +23,13 @@ char	map[] = {
 int	main(int argc, char **argv)
 {
 	t_game	game;
+	t_scene *scene;
 
 	(void)argc;
 	(void)argv;
 	ft_bzero(&game, sizeof(t_game));
+	ft_bzero(&game.scene, sizeof(t_scene));
+	(void)scene;
 	// game.scene.map = (char *)map;
 	// game.scene.map_height = 10;
 	// game.scene.map_width = 10;
@@ -42,8 +45,16 @@ int	main(int argc, char **argv)
 	// // mlx_loop_hook(game.mlx, render_frame, &game);
 	// mlx_loop_hook(game.mlx, display_game, &game);
 	// mlx_loop(game.mlx);
-	check_map(argv[1]);
-
+	scene = check_map(argv[1]);
+	if(scene)
+	{
+		for(int i = 0; scene->map[i] ; i++)
+		{
+			printf("map[%d]: %s\n", i, scene->map[i]);
+		}
+	}
+	free_scene(scene);
+	//printf("Scene map: %p\n", scene);
 	return (EXIT_SUCCESS);
 	
 }
