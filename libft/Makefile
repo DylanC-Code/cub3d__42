@@ -6,7 +6,7 @@
 #    By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/09 16:35:34 by dcastor           #+#    #+#              #
-#    Updated: 2025/07/25 11:01:51 by dcastor          ###   ########.fr        #
+#    Updated: 2025/06/12 12:50:23 by dcastor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -MMD
 
 NAME = libft.a
-OPTIONS = -c -I ./includes -I ../includes/
+OPTIONS = -c -I ./includes
 
 SRCS_DIR = srcs/
 BUILD_DIR = build/
@@ -53,7 +53,6 @@ SRCS = $(addprefix $(SRCS_DIR), \
 	string/ft_strlcpy.c \
 	string/ft_strlcat.c \
 	string/ft_strchr.c \
-	string/ft_ischarset.c \
 	string/ft_strrchr.c \
 	string/ft_strncmp.c \
 	string/ft_strcmp.c \
@@ -78,6 +77,7 @@ SRCS = $(addprefix $(SRCS_DIR), \
 	utils/ft_uitoa.c \
 	utils/quick_sort.c \
 	utils/gnl/get_next_line.c \
+	utils/gnl/get_next_line_part2.c \
 	\
 	output/ft_putchar_fd.c \
 	output/ft_putstr_fd.c \
@@ -101,7 +101,6 @@ SRCS = $(addprefix $(SRCS_DIR), \
 	validate/ft_isalnum.c \
 	validate/ft_isascii.c \
 	validate/ft_isprint.c \
-	validate/ft_isspace.c \
 	validate/is_valid_number.c \
 )
 

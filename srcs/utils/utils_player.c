@@ -18,8 +18,8 @@ void	set_player_angle(t_game *g, char c)
 		g->player.angle = -(PI / 2);
 	else if (c == 'S')
 		g->player.angle = PI / 2;
-	else if (c == 'E')
-		g->player.angle = PI;
 	else if (c == 'W')
+		g->player.angle = PI;
+	else if (c == 'E')
 		g->player.angle = 0;
 }

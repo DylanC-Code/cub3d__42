@@ -19,6 +19,19 @@
 # define FOV (PI / 3) // 60deg
 # define RAY_COUNT 60
 
+typedef struct s_textures
+{
+	char			*east;
+	char			*west;
+	char			*north;
+	char			*south;
+	int				floor_color;
+	int				ceil_color;
+	int				floor_set;
+	int				ceil_set;
+}					t_textures;
+
+
 typedef struct s_image
 {
 	void			*img;
@@ -30,15 +43,7 @@ typedef struct s_image
 	int				height;
 }					t_image;
 
-typedef struct s_textures
-{
-	char			*east;
-	char			*west;
-	char			*north;
-	char			*south;
-	int				floor_color;
-	int				ceil_color;
-}					t_textures;
+
 
 typedef struct s_rcol
 {
@@ -88,9 +93,11 @@ typedef struct s_scene
 	t_textures		textures;
 	t_walls_img		walls;
 	char			*map;
+	char		**arr_map;
 	int				map_width;
 	int				map_height;
 }					t_scene;
+
 
 typedef struct s_coordinates
 {
@@ -124,6 +131,7 @@ typedef struct s_game
 # include "mlx.h"
 # include "raycast.h"
 # include "render.h"
+# include "parsing.h"
 # include "utils.h"
 # include <X11/X.h>
 # include <X11/keysym.h>

@@ -23,15 +23,16 @@ void	render_map(t_game *game)
 	put_square(&game->render_hud, &map_pos, 32 * game->scene.map_width,
 		0x003890f5);
 	el_pos.y = -1;
-	while (++el_pos.y < game->scene.map_height)
+	while (++el_pos.y < game->scene.map_height + HEIGHT_PADDING)
 	{
 		el_pos.x = -1;
-		while (++el_pos.x < game->scene.map_width)
+		while (++el_pos.x < game->scene.map_width + WIDTH_PADDING)
 		{
 			el_pos_off.x = 1 + el_pos.x * 32;
 			el_pos_off.y = 1 + el_pos.y * 32;
-			if (game->scene.map[((int)el_pos.y) * game->scene.map_width
-					+ (int)el_pos.x] == WALL)
+			if (game->scene.map[
+				((int)el_pos.y) * game->scene.map_width + (int)el_pos.x
+			]  == WALL)
 				put_square(&game->render_hud, &el_pos_off, 30, 0x00FFFFFF);
 			else
 				put_square(&game->render_hud, &el_pos_off, 30, 0x00000000);

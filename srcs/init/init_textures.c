@@ -26,6 +26,6 @@ void	load_walls_textures(t_game *g)
 {
 	load_one(g, &g->scene.walls.north, g->scene.textures.north);
 	load_one(g, &g->scene.walls.south, g->scene.textures.south);
-	load_one(g, &g->scene.walls.east, g->scene.textures.east);
-	load_one(g, &g->scene.walls.west, g->scene.textures.west);
+	load_one(g, &g->scene.walls.east, g->scene.textures.west);
+	load_one(g, &g->scene.walls.west, g->scene.textures.east);
 }

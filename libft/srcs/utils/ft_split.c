@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 11:09:04 by dcastor           #+#    #+#             */
-/*   Updated: 2025/06/23 21:47:46 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/06/12 12:49:19 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,18 @@ static size_t	word_len(char *str, char delimiter)
 	return (i);
 }
 
-char	**ft_split(char const *s, char c, t_garbage **gc)
+static void	free_strs(char **strs)
+{
+	size_t	i;
+
+	i = -1;
+	while (strs && strs[++i])
+		free(strs[i]);
+	if (strs)
+		free(strs);
+}
+
+char	**ft_split(char const *s, char c)
 {
 	const unsigned int	words_nb = count_words(s, c);
 	char				*src;
@@ -54,7 +65,7 @@ char	**ft_split(char const *s, char c, t_garbage **gc)
 	size_t				i;
 
 	src = (char *)s;
-	result = gc_malloc(sizeof(char *) * (words_nb + 1), gc);
+	result = malloc(sizeof(char *) * (words_nb + 1));
 	if (!result)
 		return (NULL);
 	word_index = 0;
@@ -65,9 +76,9 @@ char	**ft_split(char const *s, char c, t_garbage **gc)
 			i++;
 		if (!src[i])
 			break ;
-		result[word_index] = ft_strndup(src + i, word_len(src + i, c), gc);
+		result[word_index] = ft_strndup(src + i, word_len(src + i, c));
 		if (result[word_index++] == NULL)
-			return (NULL);
+			return (free_strs(result), NULL);
 		i += word_len(src + i, c);
 	}
 	result[word_index] = NULL;

@@ -15,5 +15,6 @@
 void	display_hud(t_game *game)
 {
 	render_map(game);
+	//(void)game;
 	render_player(game);
 }

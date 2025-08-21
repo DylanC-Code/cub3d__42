@@ -37,7 +37,7 @@ static void	free_scene_data(t_scene *s)
 	free(s->textures.south);
 	free(s->textures.east);
 	free(s->textures.west);
-	// free(s->map);
+	free(s->map);
 	s->textures.north = NULL;
 	s->textures.south = NULL;
 	s->textures.east = NULL;

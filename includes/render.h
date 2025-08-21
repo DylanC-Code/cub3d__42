@@ -17,8 +17,8 @@
 
 enum				ELEMENTS
 {
-	EMPTY,
-	WALL,
+	EMPTY = '0',
+	WALL = '1',
 };
 
 void				display_hud(t_game *game);

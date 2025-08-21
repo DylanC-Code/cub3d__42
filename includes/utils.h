@@ -15,6 +15,8 @@
 
 void	ft_error(char *msg);
 void	exit_error(char *msg, t_game *game);
+char	*map_to_string(char **map);
+void clear_map(char *map);
 
 int		is_in_map(t_game *game, t_coordinates map);
 void	set_player_angle(t_game *g, char c);

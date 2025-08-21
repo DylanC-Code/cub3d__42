@@ -67,7 +67,13 @@ SRCS := $(addprefix $(SRCS_DIR), \
 		render/wall_column_utils.c \
 		render/wall_column.c \
 		\
+		parsing/parsing.c \
+		parsing/map_parsing.c \
+		parsing/colors.c \
+		parsing/validation.c \
+		\
 		utils/error.c \
+		utils/map.c \
 		utils/utils_map.c \
 		utils/utils_player.c \
 		\

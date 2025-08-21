@@ -13,37 +13,40 @@
 #include "cub3d.h"
 
 char	map[] = {
-	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0,
-		0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
-		1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 'N', 0, 0, 0, 1, 1, 0,
-		0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1,
-		1, 1, 1, 1,
+	'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '0', '0', '0', '0', '0', '0', '1', '1', '0', '1', '0', '0',
+		'0', '0', '0', '0', '1', '1', '0', '1', '1', '1', '0', '0', '0', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0',
+		'1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '1', '1', '0', '0', '0', '0', 'N', '0', '0', '0', '1', '1', '0',
+		'0', '0', '0', '0', '0', '0', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '1', '1', '1', '1', '1', '1', '1',
+		'1', '1', '1', '1',
 };
 
 int	main(int argc, char **argv)
 {
 	t_game	game;
 
-	(void)argc;
-	(void)argv;
 	ft_bzero(&game, sizeof(t_game));
-	game.scene.map = (char *)map;
-	game.scene.map_height = 10;
-	game.scene.map_width = 10;
-	game.scene.textures.east = ft_strdup("assets/wall_west.xpm");
-	game.scene.textures.west = ft_strdup("assets/wall_east.xpm");
-	game.scene.textures.south = ft_strdup("assets/wall_south.xpm");
-	game.scene.textures.north = ft_strdup("assets/wall_north.xpm");
-	game.player.pos.x = 5;
-	game.player.pos.y = 5;
-	game.player.angle = 3 * PI / 2;
-	// game.player.delta.x = cos(game.player.angle) * MOVE_SPEED;
-	// game.player.delta.y = -sin(game.player.angle) * MOVE_SPEED;
-	game.scene.textures.ceil_color = 0x0097E4EB;
-	game.scene.textures.floor_color = 0x00EAAA82;
+	if (argc != 2)
+		exit_error("Map missing!",&game);
+	if(!check_map( argv[1],&game.scene))
+	free_and_exit( &game,2);
 	init_game(&game);
 	handle_events(&game);
 	mlx_loop_hook(game.mlx, display_game, &game);
 	mlx_loop(game.mlx);
 	return (exit_game(&game));
+	// if(scene)
+	// {
+	// 	for(int i = 0; scene->map[i] ; i++)
+	// 		printf("map[%d]: %s\n", i, scene->map[i]);
+	// 	char *map = map_to_string(scene->map);
+	// 	if (map)
+	// 	{
+	// 		printf("[H: %d] [W: %d]\n char* map:\n%s\n", scene->map_height, scene->map_width, map);
+	// 		free(map);
+	// 	}
+	// }
+	// free_scene(scene);
+	//printf("Scene map: %p\n", scene);
+	return (EXIT_SUCCESS);
+	
 }

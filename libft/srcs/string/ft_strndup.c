@@ -13,16 +13,16 @@
 #include "libft.h"
 #include "strs.h"
 
-char	*ft_strndup(const char *s, size_t n, t_garbage **gc)
+char	*ft_strndup(const char *s, size_t n)
 {
 	const size_t	len = ft_strlen(s);
 	char			*res;
 	size_t			i;
 
 	if (len < n)
-		res = gc_malloc(len + 1, gc);
+		res = malloc(sizeof(char) * len + 1);
 	else
-		res = gc_malloc(n + 1, gc);
+		res = malloc(n + 1);
 	if (!res)
 		return (NULL);
 	i = -1;

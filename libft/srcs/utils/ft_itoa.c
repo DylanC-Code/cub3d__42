@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:49:54 by dcastor           #+#    #+#             */
-/*   Updated: 2025/06/24 10:01:29 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/05/26 10:36:57 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ unsigned char	ft_intlen(int nbr)
 	return (len);
 }
 
-char	*ft_itoa(int n, t_garbage **gc)
+char	*ft_itoa(int n)
 {
 	const unsigned int	len = ft_intlen(n);
 	const int			positive = n >= 0;
@@ -43,7 +43,7 @@ char	*ft_itoa(int n, t_garbage **gc)
 	unsigned int		i;
 
 	l_nbr = n;
-	result = gc_malloc(len + 1, gc);
+	result = malloc(len + 1);
 	if (!result)
 		return (NULL);
 	i = len - 1;

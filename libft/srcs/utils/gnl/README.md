@@ -99,4 +99,3 @@ int main(void)
 ## ✍️ Auteurs
 
 - dcastor – [42 student]
-
