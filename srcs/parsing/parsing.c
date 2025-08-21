@@ -277,10 +277,8 @@ int	extract_element_data(char *line, t_textures *st)
 	if (!line[i] || line[i] == '\n')
 		return (0);
 	start = i;
-	
 	while (line[i] && line[i] != '\n')
 		i++;
-	
 	data = s_strndup(line + start, i - start);
 	if (!data)
 		return (0);
