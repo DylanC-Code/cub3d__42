@@ -213,21 +213,19 @@ int	flood_check_outside(char **map, int *dims, int x, int y)
 
 int	flood_check_inside(char **map, int *dims, int x, int y)
 {
-	int	map_start_x;
-	int	map_start_y;
 	int	map_end_x;
 	int	map_end_y;
 
-	map_start_x = WIDTH_PADDING / 2;
-	map_start_y = HEIGHT_PADDING / 2;
-	map_end_x = dims[WIDTH] + map_start_x;
-	map_end_y = dims[HEIGHT] + map_start_y;
-	if (x < map_start_x || x >= map_end_x)
+	map_end_x = dims[WIDTH] + WIDTH_PADDING / 2;
+	map_end_y = dims[HEIGHT] + HEIGHT_PADDING / 2;
+	if (x < WIDTH_PADDING / 2 || x >= map_end_x)
 		return (SUCCESS);
-	if (y < map_start_y || y >= map_end_y)
+	if (y < HEIGHT_PADDING / 2 || y >= map_end_y)
 		return (SUCCESS);
 	if (map[y][x] == '1' || map[y][x] == 'V')
 		return (SUCCESS);
+	if (map[y][x] == ' ')
+		return (ERROR);
 	if (map[y][x] == ' ' || map[y][x] == '-' || map[y][x] == 'X')
 		return (SUCCESS);
 	if (!ft_strchr("0NSEW", map[y][x]))
@@ -337,23 +335,51 @@ int	is_reachable(char **map, int *dimensions)
 	return (free_dup(test_map, total_height), SUCCESS);
 }
 
+int	is_space_valid(char **map, int *dims, int x, int y)
+{
+	if (x > 0 && ft_strchr("0NSEW", map[y][x - 1]))
+		return (ERROR);
+	if (x < dims[WIDTH] + WIDTH_PADDING - 1 && ft_strchr("0NSEW", map[y][x + 1]))
+		return (ERROR);
+	if (y > 0 && ft_strchr("0NSEW", map[y - 1][x]))
+		return (ERROR);
+	if (y < dims[HEIGHT] + HEIGHT_PADDING - 1 && ft_strchr("0NSEW", map[y + 1][x]))
+		return (ERROR);
+	return (SUCCESS);
+}
+int	validate_spaces(char **map, int *dimensions)
+{
+	int	x;
+	int	y;
+
+	y = HEIGHT_PADDING / 2;
+	while (y < dimensions[HEIGHT] + (HEIGHT_PADDING / 2))
+	{
+		x = WIDTH_PADDING / 2;
+		while (x < dimensions[WIDTH] + (WIDTH_PADDING / 2))
+		{
+			if (map[y][x] == ' ' && !is_space_valid(map, dimensions, x, y))
+				return (write(2, "Error\nInvalid space next to walkable area\n", 42), ERROR);
+			x++;
+		}
+		y++;
+	}
+	return (SUCCESS);
+}
+
 int	validate_map(char **map, int *dimensions)
 {
 	int	player_count;
 
 	player_count = count_players(map, dimensions);
 	if (player_count == 0)
-	{
-		write(2, "Error\nNo starting position found\n", 34);
-		return (ERROR);
-	}
+		return (write(2, "Error\nNo starting position found\n", 34), ERROR);
 	if (player_count > 1)
-	{
-		write(2, "Error\nMultiple player positions\n", 33);
-		return (ERROR);
-	}
+		return (write(2, "Error\nMultiple player positions\n", 33), ERROR);
 	if (is_enclosed(map, dimensions) == ERROR)
 		return (ERROR);
+	if (!validate_spaces(map, dimensions))
+			return (ERROR);
 	if (is_reachable(map, dimensions) == ERROR)
 		return (ERROR);
 	return (SUCCESS);

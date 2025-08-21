@@ -5,13 +5,11 @@ S	 textures/s.xpm
 
 W textures/w.xpm
 
-E textures/eE.xpm
+E textures/e.xpm
 F      0,  2   ,  1
 C 255, 255, 255
 
 111111
 1010111
-100000011111 
-1E111 11
-11111111
-111
+1S11111
+ 1	

@@ -210,7 +210,7 @@ int	validate_map_reqs(t_map_data *data)
 		temp = temp->next;
 	}
 	if (player_count == 0)
-		return (write(2, "Error\nNo starting player position\n", 25), 0);
+		return (write(2, "Error\nNo starting player position\n", 35), 0);
 	if (player_count > 1)
 		return (write(2, "Error\nMultiple starting player positions\n", 33), 0);
 	return (1);
