@@ -10,7 +10,7 @@
 			"request": "launch",
 			"program": "${workspaceFolder}/cub3d",
 			"args": [
-				"test.cub"
+				"tests.cub"
 			],
 			"MIMode": "gdb",
 			"cwd": "${workspaceFolder}",

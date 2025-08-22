@@ -1,8 +1,16 @@
-N           assets/wall north.xpm
-SO assets/wall_south.xpm
+
+
+
+			N     	      assets/wall north.xpm
+		SO 	assets/wall_south.xpm
+
+
+C 155,40     ,100
+
 EA assets/wall_east.xpm
 W assets/wall_west.xpm
-C 155,40     ,100
+
+
 F 100,200,10
 
 111111111111111
