@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saal-kur <saal-kur@student.42.fr>          #+#  +:+       +#+        */
+/*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-08-16 09:30:25 by saal-kur          #+#    #+#             */
-/*   Updated: 2025-08-16 09:30:25 by saal-kur         ###   ########.fr       */
+/*   Created: 2025/08/16 09:30:25 by saal-kur          #+#    #+#             */
+/*   Updated: 2025/08/22 10:06:19 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-int	create_trgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
-
-int	skip_spaces(char *str, int i)
-{
-	while (str[i] && (str[i] == ' ' || str[i] == '\t'))
-		i++;
-	return (i);
-}
 
 int	parse_number(char *str, int *i, int *value)
 {

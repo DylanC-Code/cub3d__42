@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 10:43:06 by dcastor           #+#    #+#             */
-/*   Updated: 2025/07/27 11:01:05 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/22 10:03:52 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 void	display_hud(t_game *game)
 {
 	render_map(game);
-	//(void)game;
 	render_player(game);
 }

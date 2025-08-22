@@ -6,7 +6,7 @@
 #    By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/09 14:36:04 by dcastor           #+#    #+#              #
-#    Updated: 2025/08/22 09:39:50 by dcastor          ###   ########.fr        #
+#    Updated: 2025/08/22 10:36:39 by dcastor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,10 +67,22 @@ SRCS := $(addprefix $(SRCS_DIR), \
 		render/wall_column_utils.c \
 		render/wall_column.c \
 		\
-		parsing/parsing.c \
-		parsing/map_parsing.c \
 		parsing/colors.c \
-		parsing/validation.c \
+		parsing/colors2.c \
+		parsing/map_parsing_check.c \
+		parsing/map_parsing_list.c \
+		parsing/map_parsing_utils.c \
+		parsing/map_parsing.c \
+		parsing/parsing_element.c \
+		parsing/parsing_gnl.c \
+		parsing/parsing_id.c \
+		parsing/parsing_main.c \
+		parsing/parsing_texture.c \
+		parsing/parsing_utils.c \
+		parsing/validation_check.c \
+		parsing/validation_dimensions.c \
+		parsing/validation_dup.c \
+		parsing/validation_flood.c \
 		\
 		utils/error.c \
 		utils/map.c \

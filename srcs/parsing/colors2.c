@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   colors2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/27 11:23:25 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/22 10:03:43 by dcastor          ###   ########.fr       */
+/*   Created: 2025/08/22 10:05:45 by dcastor           #+#    #+#             */
+/*   Updated: 2025/08/22 10:06:02 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-
-int	display_game(t_game *game)
+int	create_trgb(int t, int r, int g, int b)
 {
-	display_hud(game);
-	launch_rays(game);
-	mlx_put_image_to_window(game->mlx, game->window, game->render.img, 0, 0);
-	mlx_put_image_to_window(game->mlx, game->window, game->render_hud.img, 0,
-		0);
-	return (SUCCESS);
+	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+int	skip_spaces(char *str, int i)
+{
+	while (str[i] && (str[i] == ' ' || str[i] == '\t'))
+		i++;
+	return (i);
 }
