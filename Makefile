@@ -6,7 +6,7 @@
 #    By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/09 14:36:04 by dcastor           #+#    #+#              #
-#    Updated: 2025/08/19 11:38:11 by dcastor          ###   ########.fr        #
+#    Updated: 2025/08/22 09:39:50 by dcastor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -137,7 +137,7 @@ re: fclean all
 # ============================================================================== #
 
 test_leak: $(NAME)
-	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --log-fd=1 --trace-children=yes ./$(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --log-fd=1 --trace-children=yes ./$(NAME) test.cub
 
 # ============================================================================== #
 #                                  PHONY & DEPS                                  #

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saal-kur <saal-kur@student.42.fr>          #+#  +:+       +#+        */
+/*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-08-08 19:13:53 by saal-kur          #+#    #+#             */
-/*   Updated: 2025-08-08 19:13:53 by saal-kur         ###   ########.fr       */
+/*   Created: 2025/08/08 19:13:53 by saal-kur          #+#    #+#             */
+/*   Updated: 2025/08/22 09:55:18 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ char	*trim_spaces(char *str)
 	while (*start == ' ' || *start == '\t')
 		start++;
 	end = str + ft_strlen(str);
-	while (end > start && (end[-1] == ' ' || end[-1] == '\t' || end[-1] == '\n'))
+	while (end > start && (end[-1] == ' ' || end[-1] == '\t'
+			|| end[-1] == '\n'))
 		end--;
 	len = end - start;
 	res = malloc(len + 1);
@@ -107,14 +108,13 @@ int	is_forbidden_next(char letter, char next_char)
 		return (1);
 	if (letter == 'E' && next_char == 'A')
 		return (1);
-	if ((letter == 'N' && (next_char == 'S' || next_char == 'W' || 
-		next_char == 'E' || next_char == 'A')) ||
-		(letter == 'S' && (next_char == 'N' || next_char == 'W' || 
-		next_char == 'E' || next_char == 'A')) ||
-		(letter == 'W' && (next_char == 'N' || next_char == 'S' || 
-		next_char == 'E' || next_char == 'A')) ||
-		(letter == 'E' && (next_char == 'N' || next_char == 'S' || 
-		next_char == 'W' || next_char == 'A')))
+	if ((letter == 'N' && (next_char == 'S' || next_char == 'W'
+				|| next_char == 'E' || next_char == 'A')) || (letter == 'S'
+			&& (next_char == 'N' || next_char == 'W' || next_char == 'E'
+				|| next_char == 'A')) || (letter == 'W' && (next_char == 'N'
+				|| next_char == 'S' || next_char == 'E' || next_char == 'A'))
+		|| (letter == 'E' && (next_char == 'N' || next_char == 'S'
+				|| next_char == 'W' || next_char == 'A')))
 		return (1);
 	return (0);
 }
@@ -285,7 +285,6 @@ int	extract_element_data(char *line, t_textures *st)
 	return (set_element_data(st, line, data));
 }
 
-
 int	process_element(char *line, t_scene *scene, int *counter)
 {
 	int	result;
@@ -343,7 +342,6 @@ void	free_list(t_map_data *data)
 	}
 }
 
-
 // void	free_scene(t_scene *scene)
 // {
 // 	int	i;
@@ -377,7 +375,7 @@ int	read_elements(int fd, t_scene *scene, int *counter)
 	int		ret;
 
 	line = get_next_line(fd);
-	while (line && *counter < 6)
+	while ((line && !is_empty_line(line)) || *counter < 6)
 	{
 		if (!is_empty_line(line))
 		{
@@ -438,8 +436,8 @@ int	load_file(int fd, t_scene *scene)
 
 int	check_map(char *filename, t_scene *scene)
 {
-	int			fd;
-	int			ret;
+	int	fd;
+	int	ret;
 
 	if (!has_extension(filename, ".cub"))
 		return (write(2, "Error\n.cub file required\n", 25), 0);
@@ -450,8 +448,9 @@ int	check_map(char *filename, t_scene *scene)
 	close(fd);
 	if (!ret)
 		return (0);
-	scene->map = map_to_string(scene->arr_map, scene->map_height, scene->map_width);
-	if(!scene->map)
+	scene->map = map_to_string(scene->arr_map, scene->map_height,
+			scene->map_width);
+	if (!scene->map)
 		return (write(2, "Error\nMalloc allocation failed\n", 32), 0);
 	clear_map(scene->map);
 	free_dup(scene->arr_map, scene->map_height + HEIGHT_PADDING);
